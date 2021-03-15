@@ -1,20 +1,25 @@
 package com.company;
 
-public class Rectangle extends Shape2d {
-    private double width;
-    private double height;
-
-    public Rectangle(double x, double y, double widHei) {
-        super( x, y, 5,  MathHelper.radiusFromSideLengthAndNumberOfPartitions( widHei, 5 ), 0 );
-        // Generate square
+public class Rectangle extends irregularPoly {
+    private double width, height;
 
 
-        this.width = widHei;
-        this.height = this.width;
+    /**
+     * @param x Center of the rect, x component
+     * @param y Center of the rect, y component
+     * @param width Width of the rect
+     * @param height Height of the rect
+     * @throws Exception It will never throw because we are putting more than 2 things in everytime but java
+     */
+    public Rectangle( double x, double y, double width, double height ) throws Exception {
+        super(  new Vec2d(x - (width / 2), y - (height / 2)),
+                new Vec2d(x + (width / 2), y - (height / 2)),
+                new Vec2d(x + (width / 2), y + (height / 2)),
+                new Vec2d(x - (width / 2), y + (height / 2)) );
+
+        this.width = width;
+        this.height = height;
     }
-
-    public double getWidth() { return this.width; }
-    public double getHeight() { return this.height; }
 
     @Override
     public double Area() {
@@ -24,15 +29,5 @@ public class Rectangle extends Shape2d {
     @Override
     public double Perimeter() {
         return (2 * this.width) + (2 * this.height);
-    }
-
-    @Override
-    public boolean Contains(Shape2d comparator) {
-        return false;
-    }
-
-    @Override
-    public double Distance(Shape2d comparator) {
-        return  0.0;
     }
 }

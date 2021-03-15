@@ -20,10 +20,8 @@ public class regularPoly extends Shape2d{
         Vec2d[] points = this.getPoints();
         double totalArea = 0;
 
-        // Split shape into a series of triangles and then add their areas for the total area
+        // Split shape into a series of triangles ( from center to each point ) and then add their areas for the total area
         for ( int i = 0; i < points.length; i++ ) {
-            Vec2d cur_point = points[i];
-            Vec2d next_point = points[ i % points.length ]; // Get the next element in the sequence, wrapping around
 
             // Area of Triangle = 1/2 (a*b) * sin( c ) where c: is the angle in between a and b
             // c will always be the partition angle, a and b will always be the radius
@@ -34,18 +32,11 @@ public class regularPoly extends Shape2d{
         return totalArea;
     }
 
-    @Override
-    public double Perimeter() {
-        return 0;
-    }
+    @Override   // Unimplemented
+    public boolean Contains(Shape2d comparator) { return false; }
 
     @Override
-    public boolean Contains(Shape2d comparator) {
-        return false;
-    }
-
-    @Override
-    public double Distance(Shape2d comparator) {
-        return 0;
+    public boolean ContainsPoint(Vec2d point) {
+        return this.ContainsPoint( point, this.Area() );
     }
 }

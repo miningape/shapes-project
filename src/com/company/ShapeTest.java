@@ -7,14 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ShapeTest {
-
-    @BeforeEach
-    public void setup() throws Exception {
-
-    }
-
     @Test
-    @DisplayName("Basic Testing With Assert")
+    @DisplayName("Testing squares")
     public void testReturnInt() {
         assertEquals(5, 5, "Testing 5");
     }

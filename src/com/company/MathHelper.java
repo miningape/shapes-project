@@ -24,9 +24,9 @@ public class MathHelper {
      * @return The area of the triangle formed by points A, B and C
      */
     public static double triangleAreaFromPoints( Vec2d A, Vec2d B, Vec2d C ) {
-        return ( (A.x * (B.y - C.y)) +
-                 (B.x * (C.y - A.y)) +
-                 (C.x * (A.y - B.y)) ) / 2;
+        return Math.abs(( (A.x * (B.y - C.y)) +
+                          (B.x * (C.y - A.y)) +
+                          (C.x * (A.y - B.y)) ) / 2);
     }
 
 
