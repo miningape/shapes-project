@@ -1,7 +1,7 @@
 package com.company;
 
 public class Circle extends Shape2d {
-    double radius;
+    private double radius;
     public Circle( double x, double y, double radius) {
         super( x, y );
         this.radius = radius;
@@ -30,7 +30,7 @@ public class Circle extends Shape2d {
 
     // Just so the method can be used along side other methods
     @Override
-    public boolean ContainsPoint(Vec2d point, double Area) {
+    protected boolean ContainsPoint(Vec2d point, double Area) {
         return this.ContainsPoint(point);
     }
 }
