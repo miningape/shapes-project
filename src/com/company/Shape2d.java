@@ -11,11 +11,21 @@ public abstract class Shape2d {
         this.points = points;
     }
 
+
+    /**
+     * @param points List of points that define a shape
+     * @throws Exception if the shape has less than 3 points (ie is a line or point and not a polygon)
+     */
+    public Shape2d( Vec2d ...points ) throws Exception  {
+       this.pos = MathHelper.centroid( points );
+       this.points = points;
+    }
+
     public Shape2d( double x, double y, int numPoints, double regular_distance ) {
         this.pos = new Vec2d( x, y );
         this.points = new Vec2d[ numPoints ];
 
-        double angleStep = 360 / numPoints;
+        double angleStep = 360.0 / numPoints;
 
         for ( int i = 0; i < numPoints; i++ ) {
             double curAngle = MathHelper.degToRad(angleStep * i);
@@ -28,7 +38,7 @@ public abstract class Shape2d {
         this.pos = new Vec2d( x, y );
         this.points = new Vec2d[ numPoints ];
 
-        double angleStep = 360 / numPoints;
+        double angleStep = 360.0 / numPoints;
 
         for ( int i = 0; i < numPoints; i++ ) {
             double curAngle = (angleStep * i) + angleOffset;
@@ -44,11 +54,13 @@ public abstract class Shape2d {
     public void setPos ( double newX, double newY ) { this.pos = new Vec2d( newX, newY ); }
     public void setPos ( Vec2d newPos ) { this.pos = new Vec2d( newPos.x, newPos.y ); }
 
+    public Vec2d[] getPoints() { return this.points; }
+
     public void updatePos ( double dX, double dY ) { this.pos = this.pos.add( dX, dY ); updatePoints( dX, dY ); }
     public void updatePos ( Vec2d vel ) { this.pos = this.pos.add( vel ); updatePoints( vel ); }
 
     private void updatePoints ( double dX, double dY ) { updatePoints( new Vec2d( dX, dY ) ); }
-    private  void updatePoints ( Vec2d diff ) {
+    private void updatePoints ( Vec2d diff ) {
         for ( int i = 0; i < this.points.length; i++ ) {
             points[i] = points[i].add( diff );
         }

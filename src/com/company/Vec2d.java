@@ -4,22 +4,42 @@ public class Vec2d {
     public double x;
     public double y;
 
+    /**
+     * @param x the x part of a coordinate
+     * @param y the y part of a coordinate
+     */
     public Vec2d ( double x, double y ) {
         this.x = x;
         this.y = y;
     }
 
+    /**
+     * @return The magnitude/length of the vector
+     */
     public double magnitude() { return Math.sqrt( (x * x) + (y * y) ); }
     public double projection( Vec2d Other ) { return 0.0; }
     public double dotProduct( Vec2d Other ) { return 0.0; }
     public Vec2d normalVector() { return new Vec2d(0, 0); }
 
+    /**
+     * @return The normal vector (magnitude = 1)
+     */
     public Vec2d normalize() {
         double mag = this.magnitude();
         return new Vec2d( this.x / mag, this.y / mag );
     }
 
+    /**
+     * @param scale The scalar multiple
+     * @return The vector multiplied by scale
+     */
     public Vec2d scalarMult( double scale ) { return new Vec2d( this.x * scale, this.y * scale ); }
+
+    /**
+     * @param scale The scalar multiple
+     * @return The vector divided by scale
+     */
+    public Vec2d scalarDiv( double scale ) { return new Vec2d( this.x / scale, this.y / scale ); }
 
     public Vec2d matrixMult( double r1c1, double r1c2,
                              double r2c1, double r2c2 ) {

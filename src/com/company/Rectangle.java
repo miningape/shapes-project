@@ -5,7 +5,7 @@ public class Rectangle extends Shape2d {
     private double height;
 
     public Rectangle(double x, double y, double widHei) {
-        super( x, y, 10,  MathHelper.radiusFromSideLengthAndNumberOfPartitions( widHei, 10 ), 70 );
+        super( x, y, 5,  MathHelper.radiusFromSideLengthAndNumberOfPartitions( widHei, 5 ), 0 );
         // Generate square
 
 
