@@ -9,7 +9,6 @@ public class Main {
         Shape2d tri = new EqTriangle(-2 ,6, 3);
         Shape2d rect = new Rectangle(2, 3, 4, 5);
 
-
         pent.setPos(9, 10);
         tri.updatePos(2, 13);
 

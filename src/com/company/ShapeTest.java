@@ -95,7 +95,66 @@ class ShapeTest {
 
     @Test
     @DisplayName("Testing the distance between several polys")
-    public void testDist() {
+    public void testDist() throws Exception {
         Shape2d rect, square, pent, triangle, self, circle;
+
+        rect = new Rectangle( 1, 0, 3, 4);
+        square = new Square( 2, 0, 4 );
+        pent = new Pentagon( -2, 0, 5, 45 );
+        triangle = new EqTriangle( 0, 0, 6 );
+        self = new regularPoly(0, 0, 16, 8);
+        circle = new Circle(10, 0, 5);
+
+        assertEquals( rect.Distance(square), 1 , "Rect Square");
+        assertEquals( pent.Distance(triangle), 2, "Pent Triangle");
+        assertEquals( self.Distance(circle), 10 , "Circle octogon");
+        assertEquals( triangle.Distance(square), 2 , "Tri Square");
+        assertEquals( self.Distance(square), 2 , "Rect Square");
+        assertEquals( self.Distance(rect), 1 , "Rect Square");
+        assertEquals( rect.Distance(self), 1 , "Rect Square");
+        assertEquals( rect.Distance(circle), 9 , "Rect Square");
+        assertEquals( self.Distance(pent), 2 , "Rect Square");
     }
+
+    @Test
+    @DisplayName("Testing the Vec2d stuff")
+    public void testVec2d() {
+        Vec2d first = new Vec2d( 0, 0 );
+        Vec2d second = new Vec2d( 0, 0 );
+        Vec2d third = new Vec2d( 0, 0 );
+
+        assertEquals( first.add( 1, 3 ).toString(), second.sub( 1, 3 ).scalarMult(-1).toString(), "Add, Sub Mul");
+
+        third = third.add(10, 0);
+        assertEquals( third.magnitude(), 10 , "Magnitude");
+
+        third = third.add(10, 0);
+        assertEquals( third.normalize().magnitude(), 1 , "Magnitude normal");
+
+        assertEquals( first.add(10, 10).normalize().toString(), second.add(5, 5).normalize().toString() , "Normalize");
+    }
+
+    @Test
+    @DisplayName("Testing the position of polys")
+    public void testshapepos() throws Exception {
+        Shape2d rect, square, pent, triangle, self, circle;
+
+        rect = new Rectangle( 1, 0, 3, 4);
+        square = new Square( 2, 0, 4 );
+        pent = new Pentagon( -2, 0, 5, 45 );
+        triangle = new EqTriangle( 0, 0, 6 );
+        self = new regularPoly(0, 0, 16, 8);
+        circle = new Circle(10, 0, 5);
+
+        assertEquals( rect.getPos().toString(), new Vec2d(1, 0).toString() , "Rect Square");
+        assertEquals( square.getPos().toString(), new Vec2d(2, 0).toString() , "Rect Square");
+        assertEquals( pent.getPos().toString(), new Vec2d(-2, 0).toString() , "Rect Square");
+        assertEquals( triangle.getPos().toString(), new Vec2d(0, 0).toString() , "Rect Square");
+        assertEquals( self.getPos().toString(), new Vec2d(0, 0).toString() , "Rect Square");
+        assertEquals( circle.getPos().toString(), new Vec2d(10, 0).toString() , "Rect Square");
+
+        circle.setPos(0, 0);
+        assertEquals( self.getPos().toString(), circle.getPos().toString(), "Rect Square");
+    }
+
 }
