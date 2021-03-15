@@ -3,7 +3,7 @@ package com.company;
 public class Main {
     public static void main(String[] args) {
         //Rectangle rect = new Rectangle(0, 0, 1);
-        regularPoly rect = new regularPoly(0, 0, 10, 5, 0);
+        Square rect = new Square(0, 0, 2);
 
         Vec2d centroid = new Vec2d(0, 0);
 

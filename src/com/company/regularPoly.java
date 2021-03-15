@@ -11,7 +11,7 @@ public class regularPoly extends Shape2d{
         super( x, y, num_sides, MathHelper.radiusFromSideLengthAndNumberOfPartitions( side_length, num_sides ), offset );
 
         // I really really hate having to call this math operation more than once, but java has forced my hand
-        radius = MathHelper.radiusFromSideLengthAndNumberOfPartitions( side_length, num_sides );
+        this.radius = MathHelper.radiusFromSideLengthAndNumberOfPartitions( side_length, num_sides );
         this.partitionAngle = 360.0 / num_sides;
     }
 

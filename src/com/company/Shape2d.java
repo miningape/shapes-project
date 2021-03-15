@@ -90,6 +90,7 @@ public abstract class Shape2d {
     public void updatePos ( double dX, double dY ) { this.updatePos( new Vec2d( dX, dY ) ); }
     public void updatePos ( Vec2d vel ) { this.pos = this.pos.add( vel ); updatePoints( vel ); }
 
+    // Should never be called by anything other than this class
     private void updatePoints ( double dX, double dY ) { updatePoints( new Vec2d( dX, dY ) ); }
     private void updatePoints ( Vec2d diff ) {
         for ( int i = 0; i < this.points.length; i++ ) {

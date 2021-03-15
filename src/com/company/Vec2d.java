@@ -1,5 +1,10 @@
 package com.company;
 
+
+/**
+ * This class basically represents a point in 2d cartesian space,
+ * a lot of vector operations are either implemented (or to be implemented)
+ */
 public class Vec2d {
     public double x;
     public double y;
@@ -17,6 +22,8 @@ public class Vec2d {
      * @return The magnitude/length of the vector
      */
     public double magnitude() { return Math.sqrt( (x * x) + (y * y) ); }
+
+    // TODO Implement these complicated formulas for vectors
     public double projection( Vec2d Other ) { return 0.0; }
     public double dotProduct( Vec2d Other ) { return 0.0; }
     public Vec2d normalVector() { return new Vec2d(0, 0); }
